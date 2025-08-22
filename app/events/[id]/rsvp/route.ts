@@ -1,12 +1,12 @@
 import { supabase } from '@/lib/supabase'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(req: NextRequest, context: { params: { id: string } }) {
-  const { id } = context.params
+export async function POST(req: NextRequest, context: { params: Record<string, string> }) {
+  const id = context.params.id
   const formData = await req.formData()
   const status = formData.get('status') as string
 
-  const userId = '00000000-0000-0000-0000-000000000001' // replace with actual user ID for demo
+  const userId = '00000000-0000-0000-0000-000000000001' // replace with a real user UUID
 
   const { error } = await supabase.from('rsvps').insert({
     user_id: userId,
