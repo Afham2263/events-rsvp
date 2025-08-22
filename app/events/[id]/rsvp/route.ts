@@ -6,7 +6,7 @@ export async function POST(req: NextRequest, { params }: any) {
   const formData = await req.formData()
   const status = formData.get('status') as string
 
-  const userId = '00000000-0000-0000-0000-000000000001' // replace with an actual user UUID
+  const userId = '00000000-0000-0000-0000-000000000001' // replace with actual user UUID
 
   const { error } = await supabase.from('rsvps').insert({
     user_id: userId,
@@ -15,4 +15,6 @@ export async function POST(req: NextRequest, { params }: any) {
   })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 })
-  return NextResponse.redirect(n
+  
+  return NextResponse.redirect(new URL(`/events/${id}`, req.url))
+}
