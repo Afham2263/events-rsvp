@@ -17,8 +17,6 @@ This project was created as part of a database and web application assessment.
 
 ### Database ER Diagram
 
-### Database ER Diagram
-
 ```mermaid
 erDiagram
     USERS {
